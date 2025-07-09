@@ -1,32 +1,36 @@
-# Use official PHP image with Apache
-FROM php:8.2-apache
-
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    libzip-dev zip unzip git curl libonig-dev libxml2-dev \
-    && docker-php-ext-install pdo pdo_mysql zip
-
-# Enable Apache mod_rewrite
-RUN a2enmod rewrite
+# Use official PHP image with required extensions
+FROM php:8.2-fpm
 
 # Set working directory
 WORKDIR /var/www/html
 
-# Copy Laravel project files
-COPY . .
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    git \
+    curl \
+    zip \
+    unzip \
+    libzip-dev \
+    libpng-dev \
+    libonig-dev \
+    libxml2-dev \
+    libpq-dev \
+    && docker-php-ext-install pdo pdo_mysql zip
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Install Laravel dependencies
+# Copy project files
+COPY . .
+
+# Install PHP dependencies (this creates vendor/)
 RUN composer install --no-dev --optimize-autoloader
 
-# Set permissions
-RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 755 /var/www/html/storage
+# Set permissions (optional but recommended)
+RUN chown -R www-data:www-data /var/www/html
 
-# Set Apache root to /public
-RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/public|' /etc/apache2/sites-available/000-default.conf
+# Laravel-specific: cache config
+RUN php artisan config:cache
 
-# Start Apache
-CMD ["apache2-foreground"]
+# Serve Laravel with built-in PHP server
+CMD php -S 0.0.0.0:8000 -t public
