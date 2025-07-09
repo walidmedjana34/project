@@ -235,3 +235,6 @@ Route::get('/message-management', [MessageSupportController::class, 'index'])->n
 	
 	
 });
+Route::get('/', function () {
+    return 'Laravel works without DB! 🎉';
+});
