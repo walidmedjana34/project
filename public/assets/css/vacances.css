@@ -1,0 +1,402 @@
+.header-vacances{
+    background: linear-gradient(to top, #000, transparent),url("../img/accueil image/head.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    padding: 20px;
+    height: 450px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+}
+
+.header-vacances h1{
+    font-size: 2.5rem;
+    font-weight: bold;
+} 
+.header-vacances p{
+    font-size: 18px;
+    margin: 5px 0 20px;
+} 
+.vacancy-search {
+    background-color: white;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 95%; /* Increased from 85% for better mobile fit */
+    max-width: 900px;
+    margin: 0 auto; /* Center the container */
+}
+
+.vacancy-bar {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap; /* Allow fields to wrap on small screens */
+}
+
+.vacancy-field {
+    display: flex;
+    align-items: center;
+    background: #f8f9fa;
+    border: 1px solid #6c757d;
+    border-radius: 8px;
+    padding: 0;
+    position: relative;
+    height: 45px;
+    min-width: 120px; /* Minimum width before wrapping */
+    flex: 1 1 auto; /* Grow and shrink as needed */
+}
+
+.vacancy-field input, 
+.vacancy-field select {
+    background: transparent;
+    border: none;
+    outline-color: #0092ca;
+    font-size: 14px;
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    border-radius: 8px;
+    padding-left: 30px;
+}
+
+.vacancy-field i {
+    color: #0092ca;
+    position: absolute;
+    left: 12px;
+    z-index: 1; /* Ensure icon stays above input */
+}
+
+.vacancy-field select {
+    position: relative; /* Changed from absolute for better control */
+    top: 7px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-align: center;
+    text-align-last: center;
+    padding-right: 20px; /* Space for dropdown arrow */
+}
+.vacancy-field select option{
+    text-align: start;
+}
+.vacancy-field input::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .vacancy-bar {
+        gap: 8px;
+    }
+    
+    .vacancy-field {
+        height: 40px;
+        min-width: calc(50% - 10px); /* Two fields per row */
+    }
+}
+
+@media (max-width: 480px) {
+    .vacancy-search {
+        padding: 8px;
+        width: 98%;
+    }
+    
+    .vacancy-field {
+        min-width: 100%; /* Full width on smallest screens */
+        height: 38px;
+    }
+    
+    .vacancy-field input, 
+    .vacancy-field select {
+        font-size: 13px;
+    }
+}
+
+/* For very small screens (optional) */
+@media (max-width: 320px) {
+    .vacancy-field {
+        height: 36px;
+    }
+    
+    .vacancy-field i {
+        font-size: 14px;
+        left: 8px;
+    }
+    
+    .vacancy-field input, 
+    .vacancy-field select {
+        padding-left: 25px;
+        font-size: 12px;
+    }
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.filter-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: white;
+    border: 1px solid #ddd;
+    padding: 8px 15px;
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.filter-btn i {
+    font-size: 18px;
+}
+
+.filter-btn:hover {
+    background: #007bff;
+    color: white;
+}
+
+
+.filter-menu {
+    background: white;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    margin: auto;
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.filter-menu.active {
+    display: flex;
+}
+
+/* 🔹 En-tête du menu */
+.filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+#close-filter {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.filter-contentt {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: nowrap;
+    width: 100%;
+    background: #fff;
+    padding:20px 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.filter-groupe {
+    position: relative;
+    flex: 1;
+    min-width: 250px;
+    height: 70px;
+}
+
+.filter-groupe label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.filter-groupe input,
+.filter-groupe select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    background: #f8f8f8;
+    outline-color: #0092ca;
+}
+
+.equipment-options {
+    display: flex;
+    gap: 10px;
+}
+
+.equipment-options label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: #f1f3f5;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.equipment-options label:hover {
+    background: #e0e0e0;
+}
+
+input[type="checkbox"] {
+    accent-color: #007bff;
+    width: 16px;
+    height: 16px;
+}
+/* 📱 Responsive Design */
+@media (max-width: 1024px) {
+   
+
+    .filter-contentt {
+        flex-wrap: wrap;
+    }
+
+    .filter-groupe {
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+  
+
+    .filter-buttons {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .filter-btn {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+
+    .equipment-options {
+        flex-wrap: wrap;
+    }
+
+    .vacancy-search {
+        width: 95%;
+    }
+}
+
+
+
+
+.property-infoo {
+    display: flex;
+    gap: 15px;
+    font-size: 14px;
+    color: #555;
+    margin-top: 10px;
+}
+
+.property-infoo span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.property-icons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.property-icons .icon {
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    color: #555;
+}
+
+  
+.form-container {
+    max-width: 800px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+  
+.form-title {
+    text-align: center;
+    font-size: 24px;
+    color: #0092ca;
+    margin-bottom: 30px;
+}
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  .form-group label{
+    color: #333;
+    font-weight:bold;
+    margin-bottom: 10px;
+  }
+  .form-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    outline-color: #0092ca;
+    width: 100%;
+    border-radius: 8px;
+  }
+  
+  .form-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 10px;
+  }
+  
+  @media (max-width: 600px) {
+    .form-row {
+      flex-direction: column;
+    }
+  }
+  
